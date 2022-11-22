@@ -4,3 +4,21 @@ url("张博洋.png")
 no-repeat
 fixed
 50% 50%}
+h1.bgkt
+{font-size:80px;
+text-align:center;
+text-shadow:4px 3px yellow;}
+table{
+font-size:40px;
+text-align:center}
+.donghua{animation-name:gogogo;
+animation-duration:5s;}
+@keyframes gogogo{
+from{margin-top:200%;font-size:9000px;color:green;}
+90%{color:red}
+97%{color:green}
+to{gargin-left:100%;font-size:100%;color:black}}
+#ggg{animation-name:tudh;animation-duration:3s;}
+@keyframes tudh{
+from{font-size:9999px;}
+to{font-size:100%;}}
