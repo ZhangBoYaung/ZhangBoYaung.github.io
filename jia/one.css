@@ -1,6 +1,6 @@
 body
 {background:#1aaeee
-url("张博洋.png")
+url("张博洋.webp")
 no-repeat
 fixed
 50% 50%}
@@ -23,3 +23,8 @@ to{gargin-left:100%;font-size:100%;color:black}}
 from{font-size:9999px;}
 to{font-size:100%;}}
 .fdxbt{font-size:60px}
+.sekuang{font-size:50px;color:white}
+p#hei{background:black;color:white}
+p#hong{background:red}
+button{font-size:30px}
+body#kj{background:blue;}
