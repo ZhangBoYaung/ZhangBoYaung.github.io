@@ -1,0 +1,7 @@
+h1#zheng{animation-name:donghua;
+animation-duration:10s;
+animation-iteration-count:infinite;}
+@keyframes donghua{
+from{font-size:300px;color:red;}
+50%{font-size:50px;color:orange;}
+to{font-size:300px;color:red;}}
