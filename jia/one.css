@@ -1,3 +1,4 @@
+@font-face{font-family:kt;src:url('simkai.ttf');}
 body
 {background:#1aaeee
 url("张博洋.webp")
@@ -29,4 +30,4 @@ p#hong{background:red}
 button{font-size:30px}
 body#kj{background:blue;}
 hr{color:black;}
-table.sd{font-family:'楷体';}
+table.sd{font-family:'kt';}
