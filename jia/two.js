@@ -1,4 +1,4 @@
-window.alert("张博洋提示：如果出现网页加载缓慢的情况\n请一定要耐心等待\n如果出现无法连接的情况下\n请进行多次刷新!");
+window.alert("来自张博洋的温馨提示：网页加载缓慢\n请一定要耐心等待\n无法连接\n请进行多次刷新!");
 function xianshi()
 {
     ci=document.getElementById("changci1");
