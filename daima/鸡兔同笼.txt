@@ -1,0 +1,23 @@
+"""
+张博洋的项目：鸡兔同笼;
+"""
+
+import os
+os.system("color f0")
+print('鸡兔同笼问题：')
+while True:
+   try:
+        print('请输入整数')
+        tou=int(input('头一共有多少颗  |'))
+        tui=int(input('腿共有多少条  |'))
+        quanji=tou*2
+        tutui=tui-quanji
+        tu=tutui/2
+        ji=tou-tu
+        if tu==int(tu) and ji==int(ji) and tu>=0 and ji>=0:
+                print('兔——————%s只！'%int(tu))
+                print('鸡——————%s只！'%int(ji))
+        else:
+                print('数据可能有问题\n请重新检查后输入！')
+   except:
+    print('╮( ╯ - ╰ )╭ 发生了错误。。。重新检查一下')
