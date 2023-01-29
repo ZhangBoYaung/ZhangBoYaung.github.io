@@ -4,6 +4,10 @@ url("张博洋.webp")
 no-repeat
 fixed
 50% 50%}
+body#kj{background:blue
+url("张博洋.webp")
+no-repeat
+fixed}
 h1.bgkt
 {font-size:80px;
 text-align:center;
@@ -27,6 +31,5 @@ to{font-size:100%;}}
 p#hei{background:black;color:white}
 p#hong{background:red}
 button{font-size:30px}
-body#kj{background:blue;}
 hr{color:black;}
 table.sd{font-family:'楷体';}
