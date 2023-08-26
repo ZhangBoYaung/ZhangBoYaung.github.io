@@ -16,3 +16,5 @@ function kuangjia()
 }
 function yckj()
 {document.getElementById('kjds').src='four.htm'}
+
+
