@@ -4,35 +4,63 @@ url("张博洋.webp")
 no-repeat
 fixed
 50% 50%}
+
 body#kj{background:blue
 url("张博洋.webp")
 no-repeat
 fixed}
+
 h1.bgkt
 {font-size:80px;
 text-align:center;
 text-shadow:4px 3px yellow;}
+
 table{
 font-size:30px;
 text-align:center}
 .donghua{animation-name:gogogo;
 animation-duration:5s;}
+
 @keyframes gogogo{
 from{margin-top:200%;font-size:9000px;color:green;}
 90%{color:red}
 97%{color:green}
 to{gargin-left:100%;font-size:100%;color:black}}
+
 #ggg{animation-name:tudh;animation-duration:3s;}
+
 @keyframes tudh{
 from{font-size:9999px;}
 to{font-size:100%;}}
+
+@keyframes welcome{
+from{left:0px;top:0px}
+25%{left:95%;top:0px;}
+50%{left:95%;top:95%;}
+75%{left:0px;top:95%;}
+to{left:0px;top:0px;}}
+
+@keyframes welcome2{
+from{left:0px;top:0px;background:red;}
+25%{left:90%;top:0px;background:orange}
+50%{left:90%;top:70%;background:green}
+75%{left:0px;top:70%;background:blue}
+to{left:0px;top:0px;background:red;}}
+
 .fdxbt{font-size:20px}
+
 .sekuang{font-size:50px;color:white}
+
 p#hei{background:black;color:white}
+
 p#hong{background:red}
+
 button{font-size:30px}
+
 hr{color:black;}
+
 table.sd{font-family:'楷体';}
+
 button.enter{
 font-size:50px;
 text-align:center;

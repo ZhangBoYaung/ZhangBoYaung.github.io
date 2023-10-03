@@ -2,248 +2,150 @@
 <html>
 <head>
     <script>
-
+    function search()
+    {
+    var txt = document.getElementById("input1").value;
+    document.getElementById(txt).style='background:blue';
+    setTimeout(function(){document.getElementById(txt).style='background:black'},2500);
+    window.location.href = "#"+txt;
+    }
     </script>
     <style>
-        p{color:white;}
+        .xuxian{height:1px;width:100%;border-top:1px dashed grey;}
+        code{background:#343434;font-size:20px;}
+        p{color:white;font-size:22px;}
         h1{color:white;}
         h2{color:white;}
+        h3{color:white;}
     </style>
-    <title>检查站</title>
+    <title>Development Notes</title>
 <meta charset="utf-8">
 </head>
 <body style="background:black;">
-<h1 align="center">这里是张博洋的检查站</h1>
-<h2>解释：为了防止GitHub连接不稳定，标有🚩的源代码路径，需要复制后，粘贴到浏览器地址栏才能访问。</h2>
+<h1 align="center">这里是张博洋的开发笔记</h1>
+<h2><a href="#color">颜色对照表</a></h2>
+<h2>Python</h2>
+
+<div class="juzhong" style="justify-content:center;display:flex;">
+<input  style="height:30px;text-align:center;border:3px solid blue;font-size:22px;" id="input1" />
+<button style="margin-left:10px;" onclick="search()">搜索函数或方法、表达式、颜色名</button>
+</div>
+
+
+<h3><a>常用函数</a></h3>
+
 <hr/>
-<h1><a href="#tool">实用开发工具（包括其他语言）</a></h1>
-<h1>ZhangBoYaung.github.io</h1>
-<h2>
-    <a href="index.html">index.html</a><br/>
-🚩view-source:https://zhangboyaung.github.io/index.html<br/>
-Github:
-    <a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/index.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/index.html</a></h2>
+<h2>Python常用方法</h2>
+<p style="color:grey;">注：以两个下划线开头的参数非关键字参数。</p>
+<p id="capitalize">
+    1. <code>str.capitalize()</code><br/>
+    返回将str首字母变成大写，其他字母变成小写的形式。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    <a href="door.html">door.html</a><br/>
-🚩view-source:https://zhangboyaung.github.io/door.html<br/>
-Github:
-    <a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/door.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/door.html</a></h2>
+<p id="center">
+    1. <code>str.center(__width,__fillchar)</code><br/>
+    返回width宽度以fillchar填充的居中str.
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    <a href="one.css">one.css</a><br/>
-Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/one.css">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/one.css</a>
-</h2>
+<p id="ljust">
+    1. <code>str.ljust(__width,__fillchar)</code><br/>
+    返回width宽度以fillchar填充的左对齐str.
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    <a href="two.js">two.js</a><br/>
-Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/two.js">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/two.js</a>
-</h2>
+<p id="rjust">
+    1. <code>str.rjust(__width,__fillchar)</code><br/>
+    返回width宽度以fillchar填充的右对齐str.
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    <a href="IMG_2023.webp">IMG_2023.webp</a><br/>
-</h2>
+<p id="count">
+    1. <code>str.count(x,__start,__end)</code><br/>
+    返回x（位置参数）在str中从start（可选）开始至end（不包括end；可选）出现的次数。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    <a href="R-C.webp">R-C.webp</a><br/>
-</h2>
+<p id="find">
+    1. <code>str.find(__sub,__start,__end)</code><br/>
+    返回sub的第一个字符在str中的位置索引，如果str不包含sub则返回-1。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    <a href="张博洋.webp">张博洋.webp</a><br/>
-</h2>
+<p id="index">
+    1. <code>str.index(__sub,__start,__end)</code><br/>
+    返回sub的第一个字符在str中的位置索引，如果str不包含sub则抛出异常<span style="color:red;">ValueError</span>。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ▼ txt
-</h2>
+<p id="endswith">
+    1. <code>str.endswith(__suffix,__start,__end)</code><br/>
+    检查str是否以suffix结尾（start、end使用方法同上）并返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ----<a href="txt/app.txt"> txt/app.txt</a><br/>
-</h2>
+<p id="startswith">
+    1. <code>str.startswith(__prefix,__start,__end)</code><br/>
+    检查str是否以prefix结尾并返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ----<a href="txt/鸡兔同笼.txt"> txt/鸡兔同笼.txt</a><br/>
-</h2>
+<p id="expandtabs">
+    1. <code>str.expandtabs(tabsize)</code><br/>
+    返回将str中制表符（Tab）转为空格的形式（默认tabsize=8）。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ----<a href="txt/鸡兔同笼2.0.txt"> txt/鸡兔同笼2.0.txt</a><br/>
-</h2>
+<p id="isalnum">
+    1. <code>str.isalnum()</code><br/>
+    检查str中是否至少有一个字符并且都是英文或汉字或数字，返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ----<a href="txt/鸡兔同笼2.1.txt"> txt/鸡兔同笼2.1.txt</a><br/>
-</h2>
+<p id="isalpha">
+    1. <code>str.isalpha()</code><br/>
+    检查str中是否至少有一个字符并且都是英文或汉字，返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ----<a href="txt/鸡兔同笼2.1.txt"> txt/鸡兔同笼2.1.txt</a><br/>
-</h2>
-
-<h2>
-    ▼ coding
-</h2>
-
-<h2>
-    ----<a href="coding/notes.html">coding/notes.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/coding/notes.html<br/>
-----Github:
-<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/notes.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/notes.html</a>
-</h2>
-
-
-<h2>
-    ----<a href="coding/experience.html">coding/experience.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/coding/experience.html<br/>
-----Github:
-    <a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/experience.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/experience.html</a>
-</h2>
-
-<h2>
-    ----<a href="coding/msf_android.html">coding/msf_android.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/coding/msf_android.html<br/>
-    ----Github:
-   <a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/msf_android.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/msf_android.html</a>
-</h2>
-
-<h2>
-    ----<a href="coding/msf_windows.html">coding/msf_windows.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/coding/msf_windows.html<br/>
-----Github:
-<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/msf_windows.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/msf_windows.html</a>
-</h2>
+<p id="islower">
+    1. <code>str.islower()</code><br/>
+    检查str中是否只包含字母，并且都是小写，返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
 
+<p id="isdigit">
+    1. <code>str.isdigit()</code><br/>
+    检查str中是否只包含数字（不包括负号、正号、小数点），返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
-<h2>
-    ----<a href="coding/software.html">coding/software.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/coding/software.html<br/>
-----Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/software.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/coding/software.html</a>
+<p id="isnumeric">
+    1. <code>str.isnumeric()</code><br/>
+    检查str中是否只包含数字（不包括负号、正号、小数点，包括罗马数字、汉字数字），返回布尔值。
+</p>
+    <div class="xuxian"></div>
 
-</h2>
 
-<h2>
-   ---- ▼ img
-</h2>
 
-<h2>
-    --------<a href="coding/img/2.0.jpg"> coding/img/2.0.jpg</a><br/>
-</h2>
+<hr/>
+<h2 id="color">颜色对照表（引用自LiuXue86）</h2>
 
-<h2>
-    --------<a href="coding/img/屏幕截图1.webp"> coding/img/屏幕截图1.webp</a><br/>
-</h2>
-
-<h2>
-    ▼ beijing_opera
-</h2>
-
-<h2>
-    ----<a href="beijing_opera/before.html">beijing_opera/before.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/beijing_opera/before.html<br/>
-----Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/before.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/before.html</a>
-</h2>
-
-<h2>
-    ----<a href="beijing_opera/fantastic.html">beijing_opera/fantastic.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/beijing_opera/fantastic.html<br/>
-----Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/fantastic.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/fantastic.html</a>
-</h2>
-
-<h2>
-    ----<a href="beijing_opera/fantastic.html">beijing_opera/fantastic.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/beijing_opera/fantastic.html<br/>
-----Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/fantastic.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/fantastic.html</a>
-</h2>
-
-<h2>
-    ----<a href="beijing_opera/opinion1.html">beijing_opera/opinion1.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/beijing_opera/opinion1.html<br/>
-----Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/opinion1.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/opinion1.html</a>
-</h2>
-
-<h2>
-    ----<a href="beijing_opera/opinion_guo.html">beijing_opera/opinion_guo.html</a><br/>
-----🚩view-source:https://zhangboyaung.github.io/beijing_opera/opinion_guo.html<br/>
-----Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/opinion1.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/opinion_guo.html</a>
-</h2>
-
-<h2>
-   ---- ▼ laosheng
-</h2>
-
-<h2>
-    --------<a href="beijing_opera/laosheng/laosheng.html">beijing_opera/laosheng/laosheng.html</a><br/>
---------🚩view-source:https://zhangboyaung.github.io/beijing_opera/laosheng/laosheng.html<br/>
---------Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/laosheng/laosheng.html">https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main/beijing_opera/laosheng/laosheng.html</a>
-</h2>
-
-<h2>
-   -------- ▼ webp
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/259247638_18_20230118051204352.webp"> beijing_opera/laosheng/webp/259247638_18_20230118051204352.webp</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/余叔岩《洗浮山》贺天保.jpg"> beijing_opera/laosheng/webp/余叔岩《洗浮山》贺天保.jpg</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/唐韵笙《古城会》关羽.webp"> beijing_opera/laosheng/webp/唐韵笙《古城会》关羽.webp</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/奚啸伯《白帝城》刘备.jpg"> beijing_opera/laosheng/webp/奚啸伯《白帝城》刘备.jpg</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/杨宝森《伍子胥》伍员.webp"> beijing_opera/laosheng/webp/杨宝森《伍子胥》伍员.webp</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/言菊朋《宁武关》周遇吉.jpg"> beijing_opera/laosheng/webp/言菊朋《宁武关》周遇吉.jpg</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/谭富英《定军山》黄忠.jpg"> beijing_opera/laosheng/webp/谭富英《定军山》黄忠.jpg</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/马连良《借东风》诸葛亮.jpg"> beijing_opera/laosheng/webp/马连良《借东风》诸葛亮.jpg</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/laosheng/webp/高庆奎《哭秦庭》申包胥.jpg"> beijing_opera/laosheng/webp/马连良《借东风》诸葛亮.jpg</a><br/>
-</h2>
-
-<h2>
-   ---- ▼ laosheng
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/img/62.webp"> beijing_opera/img/62.webp</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/img/1962.jpg"> beijing_opera/img/1962.jpg</a><br/>
-</h2>
-
-<h2>
-    ------------<a href="beijing_opera/img/djs.webp"> beijing_opera/img/djs.webp</a><br/>
-</h2>
-
-<hr id="tool"/>
-<h2>颜色对照表（引用自LiuXue86）</h2>
-
-<table width="75%" style="text-align: center;">
+<table width="75%" style="text-align: center;border:3px solid grey;">
     <tbody>
-        <tr>
+        <tr style="color:white">
+
             <td width="15%" align="center">&nbsp;</td>
-            <td align="center">颜色名</td>
+            <td align="center" >颜色名</td>
             <td height="28" align="center">中文名称</td>
             <td align="center">Hex&nbsp;RGB</td>
             <td align="center">十进制 Decimal</td>
             <td width="15%" align="center">&nbsp;</td>
         </tr>
-        <tr>
+
+        <tr >
             <td bgcolor="#ffb6c1">&nbsp;</td>
             <td bgcolor="#dedede">LightPink</td>
             <td height="28" bgcolor="#dedede">浅粉红</td>
@@ -251,7 +153,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">255,182,193</td>
             <td bgcolor="#ffb6c1">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="粉色">
             <td bgcolor="#ffc0cb">&nbsp;</td>
             <td bgcolor="#dedede">Pink</td>
             <td height="28" bgcolor="#dedede">粉红</td>
@@ -363,7 +265,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">139,0,139</td>
             <td bgcolor="#8b008b">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="紫色">
             <td bgcolor="#800080">&nbsp;</td>
             <td bgcolor="#dedede">Purple</td>
             <td height="28" bgcolor="#dedede">紫色</td>
@@ -459,7 +361,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">248,248,255</td>
             <td bgcolor="#f8f8ff">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="蓝色">
             <td bgcolor="#0000ff">&nbsp;</td>
             <td bgcolor="#dedede">Blue</td>
             <td height="28" bgcolor="#dedede">纯蓝</td>
@@ -635,7 +537,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">175,238,238</td>
             <td bgcolor="#afeeee">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="青色">
             <td bgcolor="#00ffff">&nbsp;</td>
             <td bgcolor="#dedede">Cyan</td>
             <td height="28" bgcolor="#dedede">青色</td>
@@ -819,7 +721,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">34,139,34</td>
             <td bgcolor="#228b22">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="绿色">
             <td bgcolor="#008000">&nbsp;</td>
             <td bgcolor="#dedede">Green</td>
             <td height="28" bgcolor="#dedede">纯绿</td>
@@ -915,7 +817,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">255,255,224</td>
             <td bgcolor="#ffffe0">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="黄色">
             <td bgcolor="#ffff00">&nbsp;</td>
             <td bgcolor="#dedede">Yellow</td>
             <td height="28" bgcolor="#dedede">纯黄</td>
@@ -1027,7 +929,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">255,228,181</td>
             <td bgcolor="#ffe4b5">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="橙色">
             <td bgcolor="#ffa500">&nbsp;</td>
             <td bgcolor="#dedede">Orange</td>
             <td height="28" bgcolor="#dedede">橙色</td>
@@ -1251,7 +1153,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">205,92,92</td>
             <td bgcolor="#cd5c5c">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="红色">
             <td bgcolor="#ff0000">&nbsp;</td>
             <td bgcolor="#dedede">Red</td>
             <td height="28" bgcolor="#dedede">纯红</td>
@@ -1291,7 +1193,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">128,0,0</td>
             <td bgcolor="#800000">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="白色">
             <td bgcolor="#ffffff">&nbsp;</td>
             <td bgcolor="#dedede">White</td>
             <td height="28" bgcolor="#dedede">纯白</td>
@@ -1339,7 +1241,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">169,169,169</td>
             <td bgcolor="#a9a9a9">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="灰色">
             <td bgcolor="#808080">&nbsp;</td>
             <td bgcolor="#dedede">Gray</td>
             <td height="28" bgcolor="#dedede">灰色</td>
@@ -1355,7 +1257,7 @@ Github:<a href="https://github.com/ZhangBoYaung/ZhangBoYaung.github.io/blob/main
             <td bgcolor="#c0c0c0">105,105,105</td>
             <td bgcolor="#696969">&nbsp;</td>
         </tr>
-        <tr>
+        <tr id="黑色">
             <td bgcolor="#000000">&nbsp;</td>
             <td bgcolor="#dedede">Black</td>
             <td height="28" bgcolor="#dedede">纯黑</td>
