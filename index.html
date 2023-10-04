@@ -17,6 +17,7 @@
 
 </script>
 
+<div ><h1 id="hongzha" style="display:none;"></h1></div>
 <div style="font-size:25px;animation-name:welcome;animation-duration:5s;animation-iteration-count:infinite; position:fixed;background:white;" onclick="hello()" id="hello">你好！这里是张博洋的网站！</div>
 
 <div id="d1" align="center">
@@ -26,12 +27,13 @@
 </div>
 
 <h1 align="center" id="dy" style="font-size:138px;font-family:'楷体';" class="donghua">张博洋的网站</h1>
-<h2 align="center" class="fdxbt">提示：如果网页加载缓慢（可能需要几分钟）<br/>请一定要耐心等待<br/><br/></h2>
-
-
+<h2 align="center" class="fdxbt" id="tishi">提示：如果网页加载缓慢（可能需要几分钟）<br/>请一定要耐心等待<br/><br/></h2>
+<div align="center">
+<h2>如果你不想耐心等待：</h2><button onmouseover="over()">让你的鼠标靠近这里</button>
+</div>
 <hr/>
 
-<div align="center" >
+<div align="center" id="h1">
 <h1>2022/11/16</h1>
 <h2>张博洋的网站创建</h2>
 <p>（这个网站托管在GitHub上）<br/>（用GitHub搭建网站，除了域名和服务器不用花钱，不用备案，没有任何好处）<br/>（GitHub是个好东西，可惜只有英文版）
@@ -41,13 +43,12 @@
 
 <hr/>
 
-<div align="center">
+<div align="center" id="h2">
 
 <h1 align="center"> 2 0 2 3 </h1>
-<img src="IMG_2023.webp" alt="2023" height="490"
-        width="652">
+<img src="IMG_2023.webp" alt="2023" height="50%"
+        width="50%">
 <h2>用我的魔方拼一个“2023”的图案</h2>
-    <p>（2023年6月，那个九阶的魔方被我拧碎了……）</p>
 <hr/>
 
 <hr/>
@@ -65,7 +66,11 @@
 
 <h1 class="bgkt" id="rj">关于编程</h1>
 <hr/>
-<div align="center">
+<div align="center" id="rj1">
+        <a href="coding/notes.html" target="_blank"  >
+        <button type="button" class="enter">代码笔记</button><br/>
+    </a>
+
     <a href="coding/software.html" target="_blank"  >
         <button type="button" class="enter">我的软件</button><br/>
     </a>
@@ -83,7 +88,7 @@
 
 </div>
 
-<div align="center">
+<div align="center" id="jj1">
 <h1 class="bgkt" id="jj" >关于京剧</h1>
 <hr/>
     <a href="beijing_opera/before.html" target="_blank"  >
@@ -111,7 +116,7 @@
 <h1 class="bgkt" id="ydm">关于源代码</h1>
 <hr/>
 <table cellpadding="20" bgcolor="#3eadc9" class="sd"
-        border="15" width="75%" align="center" >
+        border="15" width="75%" align="center" id="ydm1">
     <tr>
         <td>鸡兔同笼1.0</td>
         <td><a href="https://github.com/ZhangBoYaung/Softwares-for-PC/tree/main/%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC/%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC1.0">点击跳转至GitHub存储库</a></td>
@@ -134,11 +139,15 @@
         <td><a href="txt/app.txt">TXT文件（ANSI编码)（app.py）</a></td>
     </tr>
 </table>
+
+<div id="end">
 <p style="font-size:50px">&#x1F4ED邮箱：youhulu2021@outlook.com</p>
 <p style="font-size:50px">GitHub：@ZhangBoYaung <br/>
     <a href="https://github.com/ZhangBoYaung">
     https://github.com/ZhangBoYaung</a></p>
 <p style="font-size:50px">🕊Twitter：@zhngbyn86364970</p>
+</div>
+
 <p>这个飞来飞去的框子设计得是不是非常6？<br/>你甚至可以调节它的速度（如果你能逮住它）。<br/>点击检查项目，看看它的源代码吧。如果你有更好的意见，欢迎Push代码。</p>
 <h2 style="font-size:60px;color:red;background:black;" onclick="code()" align="center">✍🏻检查项目</h2>
 

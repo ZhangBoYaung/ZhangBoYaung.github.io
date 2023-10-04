@@ -42,10 +42,29 @@ to{left:0px;top:0px;}}
 
 @keyframes welcome2{
 from{left:0px;top:0px;background:red;}
-25%{left:90%;top:0px;background:orange}
-50%{left:90%;top:70%;background:green}
-75%{left:0px;top:70%;background:blue}
+25%{left:95%;top:0px;background:orange}
+50%{left:95%;top:95%;background:green}
+75%{left:0px;top:95%;background:blue}
 to{left:0px;top:0px;background:red;}}
+
+@keyframes welcome3{
+from{left:0%;top:0%;background:red;opacity:0.7;}
+25%{left:50%;top:90%;background:orange;opacity:0.7;}
+50%{left:90%;top:0%;background:green;opacity:0.7;}
+75%{left:75%;top:90%;background:blue;opacity:0.7;}
+to{left:0%;top:0%;background:red;opacity:0.7;}
+}
+
+@keyframes hongzha{
+from{top:100%;}
+to{top:-100%;}
+}
+
+@keyframes xuanzhuan{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
 
 .fdxbt{font-size:20px}
 
