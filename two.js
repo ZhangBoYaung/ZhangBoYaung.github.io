@@ -13,7 +13,7 @@ function code()
 }
 function hello()
 {
-    var txt = prompt("输入0至100的任意一个整数或小数");
+    var txt = prompt("输入0至100的任意一个整数或小数\n输入 0 有惊喜！！！");
     if (txt=='0')
     {
        var b = document.getElementById('d1');
