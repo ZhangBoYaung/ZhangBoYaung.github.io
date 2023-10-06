@@ -165,10 +165,34 @@
     <div class="xuxian"></div>
 
 <p id="maketrans">
-    1. <code>str.swapcase()</code><br/>
-    将字符串的小写字母变大写,大写字母变小写并返回。
+    1. <code>str.maketrans()</code><br/>
+    返回字符串的映射表。<br/>详见<a>maketrans函数</a>。
 </p>
     <div class="xuxian"></div>
+
+<hr/>
+<h2 id="映射">
+    maketrans函数
+</h2>
+<div style="background:#343434;">
+<p>
+<code>
+    >>> str.maketrans('ABC','abc') <br/>
+    {65: 97, 66: 98, 67: 99} <br/>
+    # 返回的字典中的键与值都是字符的Unicode序号 <br/>
+    # 若参数为两个，则前一个字符串是被替换的字符集，第二个字符串是替换的字符集，两个字符串必须长度相同且一一对应。<br/>
+    >>> str.maketrans({'脏':'*','话':'*'}) <br/>
+    {33039: '*', 35805: '*'} <br/>
+    # 若参数为一个，则为字典 <br/>
+    >>> str.maketrans('a','A','*') <br/>
+    {97: 65, 42: None} <br/>
+    # 若参数有三个，则第三个要被删除 <br/>
+
+</code>
+
+
+</p>
+</div>
 
 
 
