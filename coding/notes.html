@@ -35,6 +35,11 @@
 <h3><a>常用函数</a></h3>
 
 <hr/>
+<h2>我的经验</h2>
+<p>1. 如何从清华大学开源软件镜像站安装python模块？<br/>使用命令<br/>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple [package]</p>
+
+
+<hr/>
 <h2>Python常用方法</h2>
 <p style="color:grey;">注：以两个下划线开头的参数非关键字参数。</p>
 <p id="capitalize">
@@ -1334,5 +1339,23 @@
     </tbody>
 </table>
 
+
+<div>
+
+    <hr/>
+    <h1>高阶函数</h1>
+    <p>在python中，高阶函数指以一个函数作为参数的函数。</p>
+    <p>#定义一个高阶函数</p>
+    <code>
+<pre>
+def xingshi(fun ,style : str ,take):
+    x = fun(take)
+    return f'{str(take)}的{style}形式是{str(x)}'
+
+>>> xingshi(bin,'二进制',12345)
+
+</pre>
+    </code>
+</div>
 </body>
 </html>
