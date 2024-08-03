@@ -14,9 +14,12 @@
                             video.srcObject = stream;
 
                     }).catch(function(error){
+                        alert('张院长说：你的手机有点垃圾呀，连getUserMeida API都不支持!要么换个浏览器，要么把手机砸了吧。')
+
                         console.error('为什么？为什么张院长控制不了你的摄像头？',error);
                     });
                 }else{
+                    alert('张院长说：你的手机有点垃圾呀，连getUserMeida API都不支持!要么换个浏览器，要么把手机砸了吧。')
                     console.error('院长说：你的手机实在太垃圾了，赶紧给我换手机！连getUserMedia API 都不支持！');
                 }
             }
