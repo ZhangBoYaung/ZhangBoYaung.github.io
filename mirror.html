@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>镜子模拟器</title>
+        <meta charset="utf-8">
+        <script>            
+            function mouse2(){
+                const video = document.getElementById('mirror');  //获取<video>
+                //检查是否支持getUserMedia API
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+                    //请求访问摄像头
+                    navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){
+                        //将摄像头的视频流绑定<video>
+                            video.srcObject = stream;
+
+                    }).catch(function(error){
+                        console.error('为什么？为什么张院长控制不了你的摄像头？',error);
+                    });
+                }else{
+                    console.error('院长说：你的手机实在太垃圾了，赶紧给我换手机！连getUserMedia API 都不支持！');
+                }
+            }
+
+
+            function mouse(){
+                var choice = prompt("请输入你的性别：（男/女）")
+                if (choice=='男'){
+                    document.write("<img src='img/mirror1.webp' style='width:100%'>");
+                }else if(choice=="女"){
+                    document.write("<img src='img/mirror2.webp' style='width:100%'>");
+                }else{
+                    alert('对不起！我们不能允许既不是男性又不是女性的用户使用我们的产品！')
+                }
+                document.write('<a href="zhangboyaung.github.io/mirror"><button>刷新</button></a>')
+            }
+        </script>
+        <style>
+            h1{
+                font-size:30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 align="center" >镜子模拟器</h1>
+        <h2>开发者：张院长</h2>
+        <p>这是一个镜子模拟器。 </p>
+        <p>你还在因为出门被小鸟在脸上拉屎但找不到镜子而发愁吗？</p>
+        <p>点击下方的绿色按钮，然后在线<span style="color:red;">免费</span>使用我们开发的网络镜子。</p>
+        <p style="color:pink">你可能难以相信，我们的镜子附带美颜效果。</p>
+        <div align="center"><button style="background:green;font-size:40px;" onclick="mouse()">蓝色按钮</button></div>
+        <div align="center"><button style="background:blue;font-size:40px;" onclick="mouse2()">绿色按钮</button></div>
+
+        <video id="mirror" autoplay playsinline style="width:100%"></video>
+    </body>
+</html>

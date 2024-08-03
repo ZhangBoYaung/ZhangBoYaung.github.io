@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实时摄像头画面展示</title>
+</head>
+<body>
+<div>
+    <h1>实时摄像头画面展示</h1>
+    <video id="videoElement" autoplay playsinline></video>
+</div>
+
+<script>
+// 获取 <video> 元素
+const video = document.getElementById('videoElement');
+
+// 检查浏览器是否支持 getUserMedia
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // 请求访问用户的摄像头
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+            // 将摄像头的视频流绑定到 <video> 元素上
+            video.srcObject = stream;
+        })
+        .catch(function (error) {
+            console.error('访问用户摄像头失败：', error);
+        });
+} else {
+    console.error('您的浏览器不支持 getUserMedia API');
+}
+</script>
+
+</body>
+</html>
