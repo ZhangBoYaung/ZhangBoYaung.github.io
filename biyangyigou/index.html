@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彼洋易购 · 多快好省</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: red;
+            text-shadow: 0 0 5px #ff4500;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: red;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .warning {
+            background-color: #1a0000;
+            border: 1px solid #ff0000;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            color: #ff9999;
+            font-size: 0.8rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 50px;
+            transition: all 0.3s;
+        }
+
+        .product:hover {
+            border-color: #666;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+        }
+
+        .product-img {
+            background-color: #222;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+        }
+
+        .tomato-icon {
+            font-size: 4rem;
+            color: #ff4500;
+        }
+
+        .product-title {
+            color: #ff6600;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .product-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            color: #00ff00;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #222;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #003300;
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        .info-box {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .info-title {
+            color: #ff4500;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .status-bar {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 10px;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>连接状态: <span class="blink" style="color:green;">安全</span></div>
+
+    </div>
+
+    <header>
+        <h1 >/// 彼洋易购 ///</h1>
+        <p class="tagline" >多 · 快 · 好 · 省</p>
+    </header>
+
+    <div class="warning">
+        警告: 本平台不销售合法商品。
+    </div>
+
+
+    <div class="info-box">
+        <h3 class="info-title">交易须知</h3>
+        <p>1. 所有交易使用微信或支付宝进行支付。先付款，后提货。</p>
+        <p>2. 所有商品均需自取，暂不支持快递发货。虚拟商品一律使用网盘链接发货。</p>
+        <p>3. 如果商家未发货或者货物质量有问题，请直接与商家进行交流，本平台概不负责。</p>
+
+    </div>
+
+    <div class="container">
+        <div class="product">
+            <div class="product-img">
+                <div class="tomato-icon">📄</div>
+            </div>
+            <h3 class="product-title">李宏斌老师的物理讲稿（第九章第一节）网盘发货</h3>
+            <p class="product-desc">李宏斌老师是内蒙古自治区物理学科带头人。提出"双轨驱动"教学法，既强调知识体系的完整性，又注重学习方法的培养。<br/>在物理教学中推行"课前预研－课堂探究－课后拓展"三阶段教学模式，通过设置开放性课题引导学生主动构建知识框架。<br/>物理讲稿是李宏斌老师的智慧结晶。</p>
+            <div class="product-price">10,000 ￥</div>
+            <a href="1.html" class="btn">BUY IT！！！</a>
+        </div>
+
+        <div class="product">
+            <div class="product-img">
+                <div class="tomato-icon"><img src="xh.webp" width="200" height="200"></div>
+            </div>
+            <h3 class="product-title">呼市二中邢颢的毛发50g（限购一份）</h3>
+            <p class="product-desc">邢颢的毛发被称为“赫菲斯托斯之焰”，该称号源自古希腊火神赫菲斯托斯。</p>
+            <div class="product-price">0.01 ￥</div>
+            <a href="2.html" class="btn">BUY IT！！！</a>
+        </div>
+
+        <div class="product">
+            <div class="product-img">
+                <div class="tomato-icon">空白</div>
+            </div>
+            <h3 class="product-title">敬请期待。。。</h3>
+            <p class="product-desc"></p>
+            <div class="product-price"></div>
+            <a href="#" class="btn"></a>
+        </div>
+
+
+</div>
+    <footer>
+        <p >彼洋易购  一个让用户不放心的交易平台 © 2025 | 多 · 快 · 好 · 省 | </p>
+        <p style="margin-top: 10px; font-size: 0.7rem;">连接已加密 | 用户身份已隐藏 | IP地址已混淆</p>
+    </footer>
+</body>
+</html>
