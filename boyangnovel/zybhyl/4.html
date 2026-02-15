@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>波扬小说</title>
+    <style>
+        /* 极简暗网重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Courier New', Courier, monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* 极淡扫描线 */
+            &::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: repeating-linear-gradient(0deg,
+                    rgba(0, 30, 0, 0.06) 0px,
+                    rgba(0, 255, 0, 0.01) 2px,
+                    transparent 3px,
+                    transparent 5px);
+                pointer-events: none;
+                z-index: 5;
+            }
+        }
+
+        /* 数字雨背景 */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+
+        /* 主容器 */
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 700px;
+            margin: 16px;
+        }
+
+        /* 阅读器卡片 */
+        .reader-panel {
+            background: rgba(0, 0, 0, 0.88);
+            border: 1.5px solid #1b9f1b;
+            box-shadow: 0 0 20px #1e7e1e, inset 0 0 8px #0e4f0e;
+            border-radius: 28px;
+            padding: 1.8rem 1.8rem 2.2rem;
+            color: #b5ffb5;
+            text-shadow: 0 0 4px #0b8f0b;
+            backdrop-filter: blur(1px);
+        }
+
+        /* 标题区 */
+        .title-section {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px dashed #2a9f2a;
+            padding-bottom: 1.2rem;
+        }
+
+        .story-title {
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: #bfffbf;
+            text-shadow: 0 0 8px #0f0, 0 0 15px #0b6b0b;
+            letter-spacing: 2px;
+            word-break: break-word;
+            animation: titlePulse 3s infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            0% { text-shadow: 0 0 5px #0f0, 0 0 10px #0a7a0a; }
+            100% { text-shadow: 0 0 12px #0f0, 0 0 25px #1bb31b; }
+        }
+
+        /* 导航按钮行 — 三个按钮并排 */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1.8rem 0 2rem 0;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #1a3f1a;
+            border: 1.5px solid #2fbf2f;
+            color: #d0ffd0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            min-width: 120px;
+            text-align: center;
+            transition: all 0.15s ease;
+            box-shadow: 0 0 12px #0f0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .nav-btn:hover {
+            background: #2d8f2d;
+            color: #000;
+            border-color: #8fff8f;
+            box-shadow: 0 0 25px #0f0;
+            transform: scale(1.02);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* 文本区域 — 仅显示纯文本 */
+        .text-area {
+            background: rgba(10, 25, 10, 0.7);
+            border-left: 6px solid #2bdf2b;
+            border-radius: 0 24px 24px 0;
+            padding: 2rem 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            min-height: 280px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #dcffdc;
+            box-shadow: inset 0 0 25px #0e3f0e;
+            word-break: break-word;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* 纯文本段落 */
+        .text-area p {
+            margin: 1rem 0;
+            text-indent: 2em;
+        }
+
+        .text-area p:first-child {
+            margin-top: 0;
+        }
+
+        .text-area p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 底部暗网标识 */
+        .foot-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #3e9f3e;
+            letter-spacing: 2px;
+            border-top: 1px dashed #1e7a1e;
+            padding-top: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        /* 手机适配 */
+        @media (max-width: 550px) {
+            .reader-panel {
+                padding: 1.5rem 1.2rem;
+            }
+            .story-title {
+                font-size: 2rem;
+            }
+            .nav-bar {
+                gap: 8px;
+            }
+            .nav-btn {
+                font-size: 1.5rem;
+                padding: 0.6rem 0.5rem;
+                min-width: 80px;
+            }
+            .text-area {
+                font-size: 1rem;
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .story-title {
+                font-size: 1.8rem;
+            }
+            .nav-btn {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* 无触摸高亮 */
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- 数字雨背景 -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="wrapper">
+        <div class="reader-panel">
+            <!-- 标题区：仅小说标题 -->
+            <div class="title-section">
+                <h1 class="story-title" id="storyTitle">🥵 张艺博爆炒霍艳磊</h1>
+                <h2 class="story-title" >[4]</h2>
+                <h2 class="story-title" >博洋巧施连环计<br/>艳磊误入艺博房</h2>
+            </div>
+
+            <!-- 导航按钮：三个按钮全部跳转百度 -->
+            <div class="nav-bar">
+                <a href="3.html" class="nav-btn" id="prevBtn" target="_blank" rel="noopener noreferrer">← 上一页</a>
+                <a href="zhangboyaung.github.io/boyangnovel" class="nav-btn" id="homeBtn" target="_blank" rel="noopener noreferrer">🏠 主页</a>
+                <a href="5.html" class="nav-btn" id="nextBtn" target="_blank" rel="noopener noreferrer">下一页 →</a>
+            </div>
+
+            <!-- 纯文本内容区域 (仅文本, 无额外装饰) -->
+            <div class="text-area" id="textContent">
+                <p>沈若涵离开霍艳磊家后，走在略显阴凉的楼道里，胸口依然因为刚才的戏弄而剧烈起伏。她忍不住伸手按了按自己被汗水浸湿的衬衫，指尖滑过那抹还残留着热度的肌肤，眼神里闪烁着一种近乎报复的快感。她并不是表面上那么无害，甚至已经在盘算着明天在学校里要如何用那个“精液味”的梗继续折磨霍艳磊。而在城市的另一边，张艺博正把自己反锁在满是二次元海报的卧室里，电脑上循环播放着偷拍来的、角度极其刁钻的女生运动会视频，手里忙活不停，完全不知道有两个“不速之客”正被命运（以及张博洋的阴谋）引向他那充满霉味的狗窝。</p>
+                <p>沈若涵走的时候，那串轻盈的脚步声在空旷的走廊里回荡了很久，仿佛每一下都踩在霍艳磊濒临崩溃的神经末梢上。房门关上的瞬间，霍艳磊像是脱水后的咸鱼一样，软绵绵地顺着窗台滑坐在地板上。他大口喘着气，脸上的潮红还没退去，裤裆里那个支起的帐篷不仅没有因为班长的离去而萎缩，反而因为刚才那种极度的心理压迫和生理诱惑而涨得发疼。</p>
+                <p>你坐在那里，好整以暇地看着他这副烂泥扶不上墙的烂样子，眼神里没有一丝怜悯，只有一种计谋得逞后的冰冷。你并没有给他任何喘息的机会，而是慢条斯理地从口袋里掏出手机，在屏幕上滑了几下，然后用那种毫无波动的语调开了口：“沈若涵虽然走了，但你现在的样子，就算再打三发也消不下去火吧。想知道她为什么会突然来找你吗？”</p>
+                <p>霍艳磊抬起头，眼神有些涣散，汗水顺着鬓角流进脖子里，让他看起来湿哒哒的，像是个刚从水里捞出来的受惊动物。“为……为什么？不就是送卷子吗？”</p>
+                <p>“送卷子只是借口。”你发出一声轻笑，那种笑声在死寂的房间里显得格外刺耳，“是张艺博。他在学校的表白墙上发了一些关于沈若涵的下流东西，甚至还暗示他手里有沈若涵换衣服的录像。沈若涵觉得那东西是你给他的，所以今天才特意来试探你。你刚才的表现，大概已经让她确定你就是共犯了。”</p>
+                <p>“卧槽！张艺博那个猥琐男！”霍艳磊一听到这个名字，整个人像是被电击了一样猛地跳了起来。张艺博是班里最招人嫌的存在，常年穿着一件发黄的连帽衫，低着头穿梭在教学楼的阴影里，听说他家里的电脑硬盘里全是偷拍来的私货。霍艳磊虽然爱撸管，但他自诩是个“有原则”的色狼，一听到自己被那个恶心的家伙拉下了水，火气蹭地一下就上来了。</p>
+                <p>“你要是不想明天被全校通报，顺便被沈若涵记恨一辈子，现在就跟我走。”你站起身，动作优雅地整理了一下并没有褶皱的衣领，“我知道张艺博住哪，也知道他那台宝贝电脑的密码。趁他还没把那些东西发出去，咱们去把它处理掉。顺便，如果你表现得够勇敢，说不定沈若涵还会对你产生点别样的好感，毕竟……英雄救美这套，女孩子总是吃的。”</p>
+                <p>你这番话简直像是恶魔的低语，每一个字都精准地扎在霍艳磊那由于充血而不太好使的脑门上。他几乎没怎么思考，随手抹了一把脸上的汗，提了提松垮垮的短裤，就这么傻乎乎地跟着你出了门。</p>
+                <p>你带着他在老旧的小区巷弄里穿梭，最后停在了一栋看起来就透着股陈旧腐朽味道的民房前。这里的空气中弥漫着一股下水道反味和长久不散的油烟气，墙壁上贴满了各种办证的小广告。张艺博的家就在二楼尽头。</p>
+                <p>当你推开那扇甚至没锁严实的铁门时，一股难以言喻的味道直接把跟在后面的霍艳磊熏得打了个喷嚏。那是种经年累月的汗臭、堆积如山的过期方便面桶，以及某种不可名状的、类似于蛋白质变质后的腥臭混合在一起的气味。</p>
+                <p>“张艺博，在家吗？”你推开那扇虚掩着的卧室门，声音里带着一种居高临下的压迫感。</p>
+                <p>卧室里，光线极其昏暗，只有三台大尺寸显示器在幽幽地发着绿光。屏幕上密密麻麻全是文件缩略图，有些图片的内容简直不堪入目。一个身材矮小、皮肤由于长期不见光而呈现出一种病态蜡黄色的男生正蜷缩在电脑椅上。他此时上身光着，肋骨根根分明，下身只穿了一条不知道几天没洗、已经看不出颜色的内裤。他的右手正剧烈地抖动着，随着你们的闯入，他吓得尖叫一声，整个人连带着椅子往后一倒，摔了个狗吃屎。</p>
+                <p>“张……张博洋？霍艳磊？你们怎么……”张艺博惊慌失措地想要关掉显示器，但由于手心全是汗，按了好几次都没成功。他的电脑桌上，除了凌乱的电线，还有几个形状诡异的塑料瓶，里面装着半瓶浑浊的液体。</p>
+                <p>你走进这个狭窄且粘稠的空间，鞋底踩在散落一地的纸巾上，发出“嘶啦嘶啦”的恶心声响。你并没有看他，而是侧过身，把还在发愣的霍艳磊往前一推，正好把他推到了张艺博跟前。</p>
+                <p>霍艳磊看着近在咫尺的、满脸猥琐冷汗的张艺博，再看看那些屏幕上闪烁着的沈若涵的侧影，心底那股被沈若涵勾起来的、无处安放的燥热，在这一刻混合着愤怒和某种隐秘的刺激感，彻底沸腾了。他那由于刚才被戏弄而涨得发紫的大家伙，在此时此刻，竟然对着眼前这个瘦小猥琐的男人，产生了某种连他自己都觉得荒诞且惊恐的兴奋感。</p>
+                <p>而张艺博坐在地上，看着满头大汗、胸肌起伏不定、胯部鼓囊囊一大包的霍艳磊，那双阴冷的眼睛里不仅没有恐惧，反而闪过了一丝让人毛骨悚然的、贪婪的光。</p>
+                <p>“哎呀，原来是霍同学啊……”张艺博爬起来，甚至没有去遮掩自己那由于惊吓和兴奋而有些反应的下身，反而用那只滑腻腻的手摸向了霍艳磊的小腿，语气变得极其肉麻且扭曲，“这么热的天，专门跑来我家，一定累坏了吧？要不要……先来点好康的解解乏？”</p>
+
+
+
+
+
+
+            </div>
+
+            <!-- 暗网标识 -->
+            <div class="foot-note">
+                ⚡ 张博洋太有实力了 ⚡
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // --- 数字雨 (极慢版，氛围用) ---
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let w, h;
+            let columns, drops = [];
+            const fontSize = 20;
+            const chars = "张博洋牛逼";
+
+            function resizeCanvas() {
+                w = window.innerWidth;
+                h = window.innerHeight;
+                canvas.width = w;
+                canvas.height = h;
+                columns = Math.floor(w / fontSize);
+                drops = [];
+                for (let i = 0; i < columns; i++) {
+                    drops[i] = Math.floor(Math.random() * -300);
+                }
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+                ctx.fillRect(0, 0, w, h);
+                ctx.font = `bold ${fontSize}px 'Courier New', monospace`;
+                ctx.fillStyle = 'rgba(30, 200, 30, 0.1)';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    const x = i * fontSize;
+                    const y = drops[i] * fontSize;
+
+                    if (Math.random() > 0.99) {
+                        ctx.fillStyle = 'rgba(140, 255, 140, 0.2)';
+                    } else {
+                        ctx.fillStyle = 'rgba(20, 160, 20, 0.1)';
+                    }
+
+                    ctx.fillText(char, x, y);
+
+                    if (y > h && Math.random() > 0.98) {
+                        drops[i] = 0;
+                    } else {
+                        drops[i] += 0.4;
+                    }
+
+                    if (drops[i] * fontSize > h && Math.random() > 0.97) {
+                        drops[i] = 0;
+                    }
+                }
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            draw();
+
+            // 控制台小彩蛋
+            console.log('%c波扬阅读器 · 所有按钮均通往百度', 'color: #0f0; background:#000; font-size:14px; border:1px solid #0f0; padding:4px;');
+        })();
+    </script>
+</body>
+</html>
