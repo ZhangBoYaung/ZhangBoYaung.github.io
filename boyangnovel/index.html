@@ -201,8 +201,8 @@
             <!-- 小说列表：点击直接跳转 -->
             <ul class="story-list">
                 <li class="story-item">
-                    <a href="zybhyl/index.html" class="story-link" target="_blank" rel="noopener noreferrer">
-                        <span class="story-name">🥵 张艺博爆炒霍艳磊……</span>
+                    <a href="#" id='zyb' class="story-link" target="_blank" rel="noopener noreferrer">
+                        <span class="story-name">🥵 ZYB与HYL的故事……<br/>【色情】【血腥】【政治】</span>
                         <span class="arrow">7 ▶</span>
                     </a>
                 </li>
@@ -288,6 +288,100 @@
 
             // 控制台小彩蛋
             //console.log('%c波扬小说 · 暗网出口 (点击跳转百度)', 'color: #0f0; background:#000; font-size:14px; border:1px solid #0f0; padding:4px;');
+
+            // 获取链接元素 (原按钮现为<a>)
+            const link = document.getElementById('zyb');
+
+            // 定义正确的密码 (可根据需要修改)
+            const CORRECT_PASSWORD = '829928';
+
+            /**
+             * 弹出仿原生弹窗 (使用 window.prompt)
+             * 输入密码后校验，正确则跳转百度，错误则提示并允许重新输入
+             */
+            function handlePasswordAndRedirect(event) {
+                // ★ 关键：阻止<a>的默认跳转（# 不会跳转，但阻止其修改url锚点）
+                event.preventDefault();
+
+                // 使用循环实现“错误可重试”，直到用户取消或者输入正确
+                while (true) {
+                    // 弹出密码输入框 (prompt 自带“确定”和“取消”)
+                    const userInput = window.prompt('🔑 该内容不适合18岁以下人群阅读\n请输入密钥:', '');
+
+                    // 情况1: 用户点击了“取消” 或 按了ESC (prompt 返回 null)
+                    if (userInput === null) {
+                        // 轻提示风格 (不打扰用户)
+                        console.log('用户取消了密码输入');
+                        showFloatingMessage('⛔ 密码输入已取消', 1500);
+                        break;  // 退出循环，结束流程
+                    }
+
+                    // 情况2: 用户输入了内容 (可能为空字符串)
+                    if (userInput === CORRECT_PASSWORD) {
+                        // 密码正确: 立即跳转到百度
+                        showFloatingMessage('✅ 密码正确，即将跳转...', 1200);
+
+                        // 延迟一点点跳转，让用户看到成功提示 (提升体验)
+                        setTimeout(() => {
+                            window.location.href = 'https://zhangboyaung.github.io/boyangnovel/zbyhyl/index.html';
+                        }, 600);
+                        break;  // 退出循环, 停止后续操作
+                    } else {
+                        // 密码错误: 提示错误, 并继续循环 (重新弹出)
+                        const confirmRetry = window.confirm('❌ 密码错误！\n点击“确定”重新输入，点击“取消”放弃跳转。');
+
+                        if (!confirmRetry) {
+                            // 用户选择“取消” —— 不再尝试
+                            showFloatingMessage('🔒 未通过验证', 1500);
+                            break;  // 退出循环
+                        }
+                        // 如果用户点“确定”，则继续 while 循环，重新弹出 prompt
+                    }
+                }
+            }
+
+            /**
+             * 简单的临时消息提醒 (非阻塞，悬浮在按钮附近)
+             */
+            function showFloatingMessage(text, duration = 2000) {
+                const msgDiv = document.createElement('div');
+                msgDiv.innerText = text;
+                msgDiv.style.position = 'fixed';
+                msgDiv.style.bottom = '30px';
+                msgDiv.style.left = '50%';
+                msgDiv.style.transform = 'translateX(-50%)';
+                msgDiv.style.background = '#1e3b4fd9';
+                msgDiv.style.color = 'white';
+                msgDiv.style.padding = '10px 30px';
+                msgDiv.style.borderRadius = '60px';
+                msgDiv.style.fontSize = '1rem';
+                msgDiv.style.fontWeight = '500';
+                msgDiv.style.backdropFilter = 'blur(10px)';
+                msgDiv.style.boxShadow = '0 10px 25px -8px #0a1e2e';
+                msgDiv.style.border = '1px solid #9ac7e7';
+                msgDiv.style.zIndex = '9999';
+                msgDiv.style.letterSpacing = '0.3px';
+                msgDiv.style.transition = 'opacity 0.2s';
+                document.body.appendChild(msgDiv);
+
+                // 自动移除
+                setTimeout(() => {
+                    msgDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        if (document.body.contains(msgDiv)) document.body.removeChild(msgDiv);
+                    }, 300);
+                }, duration);
+            }
+
+            // 为链接添加点击事件 (并阻止默认行为)
+            link.addEventListener('click', handlePasswordAndRedirect);
+
+            // 附加：键盘可访问性 (对于<a>，Enter键会触发click，所以无需额外处理)
+            // 但为防止焦点时回车产生“#”滚动，同样在事件里preventDefault即可
+
+            // 可选：给个微小的提示效果 (背景呼吸)
+            console.log('链接版已加载 — 密码弹窗演示 (跳转百度)');
+
         })();
     </script>
 </body>

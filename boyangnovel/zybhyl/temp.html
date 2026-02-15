@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码弹窗 · 跳转百度</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(145deg, #f6f9fc 0%, #e6f0f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 3rem 4rem;
+            box-shadow: 0 25px 40px -10px rgba(0,30,50,0.3),
+                        0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.5);
+            text-align: center;
+        }
+        h2 {
+            font-weight: 500;
+            font-size: 1.8rem;
+            margin: 0 0 0.5rem 0;
+            color: #1a3b4f;
+            letter-spacing: -0.01em;
+        }
+        .sub {
+            color: #2c5775;
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            border-bottom: 1px dashed #8db3d0;
+            padding-bottom: 0.8rem;
+        }
+        .btn-baidu {
+            background: #1a5a8c;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding: 1rem 3rem;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #0e3a5a, 0 12px 25px -5px #1a5a8c;
+            transition: all 0.1s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid #4794cc;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-baidu:hover {
+            background: #1f68a2;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #0e3a5a, 0 18px 30px -5px #1f68a2;
+        }
+        .btn-baidu:active {
+            transform: translateY(5px);
+            box-shadow: 0 4px 0 #0e3a5a, 0 12px 25px -5px #1f68a2;
+        }
+        .btn-baidu i {
+            font-size: 1.7rem;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+        }
+        .info-note {
+            margin-top: 2rem;
+            background: #d9e8f2b0;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #0a3144;
+            display: inline-block;
+            border: 1px solid white;
+            backdrop-filter: blur(4px);
+        }
+        .info-note code {
+            background: #1a3b4f;
+            color: #f0f9ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin: 0 4px;
+            font-weight: 500;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #6ea8d8;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 6px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🔐 安全入口</h2>
+        <div class="sub">验证后即可前往百度</div>
+
+        <!-- 核心按钮 -->
+        <button class="btn-baidu" id="popupTrigger">
+            <span>🚀</span> 访问百度 <span style="font-size:1.2rem;">→</span>
+        </button>
+
+        <div class="info-note">
+            <span class="dot"></span> 默认密码 <code>123456</code> <span class="dot"></span>
+        </div>
+        <p style="margin: 1rem 0 0.2rem; color:#3c627c; font-size:0.9rem; max-width:300px;">
+            ⚡ 点击按钮 · 输入密码 · 自动跳转
+        </p>
+    </div>
+
+    <script>
+        (function() {
+            // 获取按钮元素
+            const button = document.getElementById('popupTrigger');
+
+            // 定义正确的密码 (可根据需要修改)
+            const CORRECT_PASSWORD = '123456';
+
+            /**
+             * 弹出仿原生弹窗 (使用 window.prompt)
+             * 输入密码后校验，正确则跳转百度，错误则提示并允许重新输入
+             */
+            function handlePasswordAndRedirect() {
+                // 设定尝试次数标识 (可选，这里我们不强制限制次数，但用户体验给足)
+                let isCancelled = false;
+
+                // 使用循环实现“错误可重试”，直到用户取消或者输入正确
+                while (true) {
+                    // 弹出密码输入框 (prompt 自带“确定”和“取消”)
+                    const userInput = window.prompt('🔑 请输入访问密码:', '');
+
+                    // 情况1: 用户点击了“取消” 或 按了ESC (prompt 返回 null)
+                    if (userInput === null) {
+                        // 轻提示风格 (不打扰用户)
+                        console.log('用户取消了密码输入');
+                        // 可以增加一个友好的页面角落提醒（非必须）
+                        showFloatingMessage('⛔ 密码输入已取消', 1500);
+                        break;  // 退出循环，结束流程
+                    }
+
+                    // 情况2: 用户输入了内容 (可能为空字符串)
+                    if (userInput === CORRECT_PASSWORD) {
+                        // 密码正确: 立即跳转到百度
+                        showFloatingMessage('✅ 密码正确，即将跳转百度...', 1200);
+
+                        // 延迟一点点跳转，让用户看到成功提示 (提升体验)
+                        setTimeout(() => {
+                            window.location.href = 'https://www.baidu.com';
+                        }, 600);
+                        break;  // 退出循环, 停止后续操作
+                    } else {
+                        // 密码错误: 提示错误, 并继续循环 (重新弹出)
+                        const confirmRetry = window.confirm('❌ 密码错误！\n点击“确定”重新输入，点击“取消”放弃跳转。');
+
+                        if (!confirmRetry) {
+                            // 用户选择“取消” —— 不再尝试
+                            showFloatingMessage('🔒 未通过验证', 1500);
+                            break;  // 退出循环
+                        }
+                        // 如果用户点“确定”，则继续 while 循环，重新弹出 prompt
+                    }
+                }
+            }
+
+            /**
+             * 简单的临时消息提醒 (非阻塞，悬浮在按钮附近)
+             * 为了更友好的体验，不加 alert 那样生硬
+             */
+            function showFloatingMessage(text, duration = 2000) {
+                const msgDiv = document.createElement('div');
+                msgDiv.innerText = text;
+                msgDiv.style.position = 'fixed';
+                msgDiv.style.bottom = '30px';
+                msgDiv.style.left = '50%';
+                msgDiv.style.transform = 'translateX(-50%)';
+                msgDiv.style.background = '#1e3b4fd9';
+                msgDiv.style.color = 'white';
+                msgDiv.style.padding = '10px 30px';
+                msgDiv.style.borderRadius = '60px';
+                msgDiv.style.fontSize = '1rem';
+                msgDiv.style.fontWeight = '500';
+                msgDiv.style.backdropFilter = 'blur(10px)';
+                msgDiv.style.boxShadow = '0 10px 25px -8px #0a1e2e';
+                msgDiv.style.border = '1px solid #9ac7e7';
+                msgDiv.style.zIndex = '9999';
+                msgDiv.style.letterSpacing = '0.3px';
+                msgDiv.style.transition = 'opacity 0.2s';
+                document.body.appendChild(msgDiv);
+
+                // 自动移除
+                setTimeout(() => {
+                    msgDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        if (document.body.contains(msgDiv)) document.body.removeChild(msgDiv);
+                    }, 300);
+                }, duration);
+            }
+
+            // 为按钮添加点击事件
+            button.addEventListener('click', handlePasswordAndRedirect);
+
+            // 附加：键盘可访问性 (Enter键已经在button天然支持，但为了完整性)
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();  // 防止页面滚动 (空格)
+                    handlePasswordAndRedirect();
+                }
+            });
+
+            // 可选：给个微小的提示效果 (背景呼吸)
+            console.log('按钮已加载 — 密码弹窗演示 (跳转百度)');
+        })();
+    </script>
+
+    <!-- 非常备用的额外说明：如果JS加载失败不会显示，但一般不会 -->
+    <noscript>
+        <div style="color:red; padding:2rem;">您的浏览器未启用JavaScript，无法使用密码功能。</div>
+    </noscript>
+</body>
+</html>
