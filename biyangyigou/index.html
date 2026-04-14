@@ -211,6 +211,35 @@
     </div>
 
     <div class="container">
+
+        <div     class="product">
+            <div class="product-img">
+                <div class="tomato-icon"><img src="hmy.webp" width="200" height="250"></div>
+            </div>
+            <h3 class="product-title">二中韩铭宇</h3>
+            <p class="product-desc">韩铭宇是呼和浩特市第二中学的一名男同学。</p>
+
+            <p>🏢 浩宁旗舰店</p>
+            <div class="product-price">0.99 ￥</div>
+            <a href="skm.webp" class="btn">BUY IT！！！</a>
+                        <p>买家评价：</p><p style="color:green">多半好评</p>
+
+
+        </div>
+
+        <div class="product">
+            <div class="product-img">
+                <div class="tomato-icon"><img src="zsh.webp" width="200" height="250"></div>
+            </div>
+            <h3 class="product-title">二中张书衡</h3>
+            <p class="product-desc">张书衡是呼和浩特市第二中学的一名男同学。</p>
+            <p>🏢 浩宁旗舰店</p>
+            <div class="product-price">0.91 ￥</div>
+
+            <a href="skm.webp" class="btn">BUY IT！！！</a>
+            <p>买家评价：</p><p style="color:green">好评如潮</p>
+        </div>
+
         <div class="product">
             <div class="product-img">
                 <div class="tomato-icon"><img src="xuyi.webp" width="200" height="200"></div>
@@ -261,6 +290,8 @@
 
         </div>
 
+
+
         <div     class="product">
             <div class="product-img">
                 <div class="tomato-icon"><img src="slf.webp" width="200" height="200"></div>
@@ -309,6 +340,22 @@
 
     </div>
 
+
+     <!--付浩宁的飘窗效果真牛逼-->
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;">
+    <img id="p" src="fhn.webp" style="position:absolute;width:200px;height:200px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.3);cursor:pointer;">
+
+</div>
+<script>
+    let x=0,y=0,dx=2,dy=2.5,w=80,h=80;
+    setInterval(()=>{
+        let W=innerWidth-w,H=innerHeight-h;
+        x+=dx;y+=dy;
+        if(x<0||x>W)dx=-dx,x=Math.min(Math.max(x,0),W);
+        if(y<0||y>H)dy=-dy,y=Math.min(Math.max(y,0),H);
+        document.getElementById('p').style.transform=`translate(${x}px,${y}px)`;
+    },20);
+</script>
     <footer>
         <p >彼洋易购  一个让用户不放心的交易平台 © 2025 | 多 · 快 · 好 · 省 | </p>
         <p style="margin-top: 10px; font-size: 0.7rem;">连接已加密 | 用户身份已隐藏 | IP地址已混淆</p>
