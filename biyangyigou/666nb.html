@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>抽奖</title><style>body{background:white;text-align:center;font-family:system-ui;margin-top:30px}button{padding:10px 30px;font-size:20px;margin:20px}#timer{font-size:32px;font-weight:bold;margin:15px;color:#ff5500}.grid{display:flex;justify-content:center;gap:15px;margin-top:20px;flex-wrap:wrap}.card{opacity:0;visibility:hidden;transition:0.2s}.card.show{opacity:1;visibility:visible;background:white;padding:10px;border-radius:16px}.card img{width:380px;height:380px;border-radius:12px;display:block}</style></head>
+<body style="background:black">
+<button id="spin">开始抽奖</button>
+<h1 style="color:red;">奖池：一等奖：神秘人物；<br/>二等奖：李飞；<br/>三等奖：牛爷爷的胡子，付浩宁的黑色素，邢颢的毛发，大窑嘉宾。<br/>抽奖后，奖品将会自己走到收货地址。</h1>
+<div id="timer"></div>
+<div class="grid" id="grid">
+    <div class="card" id="card1"><img src="nyy.webp" alt="牛爷爷的胡子"></div>
+    <div class="card" id="card2"><img src="dyjb.webp" alt="大窑嘉宾"></div>
+    <div class="card" id="card3"><img src="hss.webp" alt="付浩宁的黑色素"></div>
+    <div class="card" id="card4"><img src="xh.webp" alt="邢颢的毛发"></div>
+    <div class="card" id="card5"><img src="lf.webp" alt="李飞"></div>
+    <div class="card" id="card6"><img src="ysq.webp" alt="银书齐"></div>
+</div>
+<script>
+const probs = [0.2, 0.2, 0.2, 0.2, 0.15, 0.05];
+const cards = [document.getElementById('card1'), document.getElementById('card2'), document.getElementById('card3'), document.getElementById('card4'), document.getElementById('card5'), document.getElementById('card6')];
+
+function getRandomIndex() {
+    let r = Math.random(), sum = 0;
+    for(let i = 0; i < 6; i++) {
+        sum += probs[i];
+        if(r < sum) return i;
+    }
+    return 5;
+}
+
+function hideAll() {
+    cards.forEach(c => c.classList.remove('show'));
+}
+
+function showOne(idx) {
+    hideAll();
+    if(idx >= 0 && idx < 6) cards[idx].classList.add('show');
+}
+
+let spinning = false;
+const spinBtn = document.getElementById('spin');
+const timerDiv = document.getElementById('timer');
+
+function startDraw() {
+    if(spinning) return;
+    spinning = true;
+    spinBtn.disabled = true;
+    hideAll();
+
+    let target = getRandomIndex();
+    let countdown = 3;
+    timerDiv.innerText = `剩余 ${countdown} 秒`;
+
+    let interval = setInterval(() => {
+        countdown--;
+        if(countdown > 0) {
+            timerDiv.innerText = `剩余 ${countdown} 秒`;
+        } else {
+            clearInterval(interval);
+            timerDiv.innerText = '恭喜您，中大奖了！';
+            showOne(target);
+            spinning = false;
+            spinBtn.disabled = false;
+            setTimeout(() => { if(timerDiv.innerText === '恭喜您，中大奖了！') timerDiv.innerText = ''; }, 1500);
+        }
+    }, 1000);
+}
+
+spinBtn.onclick = startDraw;
+hideAll();
+</script>
+</body>
+</html>
